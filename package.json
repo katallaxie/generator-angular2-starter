@@ -1,10 +1,10 @@
 {
-  "name": "generator-angular2-webpack-class",
+  "name": "generator-angular2-starter",
   "version": "1.0.0",
-  "description": "Generator of the Angular 2 Starter kit featuring Angular 2 @AngularClass",
-  "homepage": "https://github.com/katallaxie/generator-angular2-webpack-starter",
+  "description": "A starter generator for a progressive Angular 2; based on @AngularClass",
+  "homepage": "https://github.com/katallaxie/generator-angular2-starter",
   "bugs": {
-    "url": "https://github.com/katallaxie/generator-angular2-webpack-class/issues"
+    "url": "https://github.com/katallaxie/generator-angular2-starter/issues"
   },
   "author": {
     "name": "Sebastian Döll",
@@ -37,15 +37,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/katallaxie/generator-angular2-webpack-class.git"
+    "url": "git://github.com/katallaxie/generator-angular2-starter.git"
   },
   "scripts": {
     "prepublish": "npm run test",
     "test": "eslint app/**/*.js"
   },
   "engines": {
-    "node": ">=5.4.0",
-    "npm": ">=3.3.0"
+    "node": ">= 4.4.7",
+    "npm": ">= 3"
   },
   "license": "MIT"
 }

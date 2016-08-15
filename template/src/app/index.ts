@@ -1,11 +1,26 @@
-// App
-export * from './app.component';
-export * from './app.service';
-export * from './app.routes';
+import { RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
 
-import { AppState } from './app.service';
+import homeModule, { Home } from './home';
 
-// Application wide providers
-export const APP_PROVIDERS = [
-  AppState
+const ROUTER_CONFIG = [
+  { path: '', component: Home, pathMatch: 'full' },
+  { path: 'about', loadChildren: './+about' },
 ];
+
+@NgModule({
+  providers: [
+  ],
+  declarations: [
+    // Components / Directives/ Pipes
+    Home,
+  ],
+  imports: [
+    RouterModule.forChild(ROUTER_CONFIG),
+    homeModule,
+  ],
+})
+export default class AppModule {
+  static routes = ROUTER_CONFIG
+}
+
