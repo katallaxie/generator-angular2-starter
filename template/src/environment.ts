@@ -3,10 +3,15 @@
 // rc2 workaround
 import { enableDebugTools, disableDebugTools } from '@angular/platform-browser';
 import { enableProdMode } from '@angular/core';
+import { disableDeprecatedForms, provideForms } from '@angular/forms';
 // Environment Providers
 let PROVIDERS = [
   // common env directives
+  disableDeprecatedForms(), // disable deprecated forms
+  provideForms(), // enable new forms module
 ];
+
+
 
 // Angular debug tools in the dev console
 // https://github.com/angular/angular/blob/86405345b781a9dc2438c0fbe3e9409245647019/TOOLS_JS.md
@@ -16,6 +21,7 @@ if ('production' === ENV) {
   // Production
   disableDebugTools();
   enableProdMode();
+
 
   PROVIDERS = [
     ...PROVIDERS,
@@ -43,5 +49,5 @@ if ('production' === ENV) {
 export const decorateComponentRef = _decorateComponentRef;
 
 export const ENV_PROVIDERS = [
-  ...PROVIDERS
+  ...PROVIDERS,
 ];

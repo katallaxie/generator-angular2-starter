@@ -15,7 +15,6 @@ const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin
 const HtmlElementsPlugin = require('./html-elements-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OccurrenceOrderPlugin = require('webpack/lib/optimize/OccurrenceOrderPlugin');
-const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 const resolveNgRoute = require('@angularclass/resolve-angular-routes');
 
 /*
@@ -52,9 +51,9 @@ function webpackConfig() {
      */
     entry: {
 
-      polyfills: './src/polyfills.browser',
-      vendor: './src/vendor.browser',
-      main: './src/main.browser'
+      polyfills: './src/polyfills',
+      vendor: './src/vendor',
+      main: './src/boot'
 
     },
 
@@ -191,15 +190,6 @@ function webpackConfig() {
        */
       new ForkCheckerPlugin(),
 
-       /**
-       * Plugin: ProgressPlugin
-       * Description: View progress.
-       * Hook into the compiler to extract progress information.
-       *
-       * See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
-       */
-      new ProgressPlugin(),
-
       /*
        * Plugin: CommonsChunkPlugin
        * Description: Shares common code between the pages.
@@ -263,7 +253,7 @@ function webpackConfig() {
        */
       new HtmlElementsPlugin({
         headTags: require('./head-config.common')
-      })
+      }),
 
     ],
 

@@ -9,6 +9,8 @@ const commonConfig = require('./webpack.common.js'); // the settings that are co
 /**
  * Webpack Plugins
  */
+const Dashboard = require('webpack-dashboard');
+const DashboardPlugin = require('webpack-dashboard/plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 
 /**
@@ -24,6 +26,7 @@ const METADATA = webpackMerge(commonConfig.metadata, {
   ENV: ENV,
   HMR: HMR
 });
+const dashboard = new Dashboard();
 
 /**
  * Webpack configuration
@@ -130,6 +133,15 @@ function webpackConfig() {
         }
       }),
 
+      /**
+       * Plugin: DashboardPlugin
+       * Description: View progress.
+       * `'It's like to work at NASA.'`
+       *
+       * See: https://github.com/FormidableLabs/webpack-dashboard
+       */
+      new DashboardPlugin(dashboard.setData),
+
     ],
 
     /**
@@ -155,13 +167,14 @@ function webpackConfig() {
     devServer: {
       outputPath: helpers.root('dist'),
       port: METADATA.port,
+      quiet: true,
       historyApiFallback: true,
       hot: METADATA.HMR,
       inline: METADATA.HMR,
       watchOptions: {
         aggregateTimeout: 300,
         poll: 1000
-      }
+      },
     },
 
     /*
