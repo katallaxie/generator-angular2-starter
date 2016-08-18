@@ -1,39 +1,29 @@
+/**
+ * Bootstraps the application and makes the ROUTER_PROVIDERS and the APP_BASE_HREF available to it.
+ * @see https://angular.io/docs/ts/latest/api/platform-browser-dynamic/index/bootstrap-function.html
+ */
+
+// The browser platform with a compiler
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
-import { NgModule } from '@angular/core';
 
-import { App } from './app/app';
-import appModule from './app';
+// The app module
+import { AppModule } from './app';
 
-@NgModule({
-  bootstrap: [
-    App
-  ],
-  declarations: [
-    App
-  ],
-  imports: [
-    // Angular 2
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    RouterModule.forRoot([], {
-      useHash: true
-    }),
-    // app
-    appModule
-    // vendors
-  ],
-  providers: []
-})
-class MainModule {}
-
+// Compile and launch the module
 export function main() {
-  return platformBrowserDynamic().bootstrapModule(MainModule);
+  return platformBrowserDynamic().bootstrapModule(AppModule);
 }
+
+// In order to start the Service Worker located at "./worker.js"
+// uncomment this line. More about Service Workers here
+// https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers
+//
+// if ('serviceWorker' in navigator) {
+//   (<any>navigator).serviceWorker.register('./worker.js').then((registration: any) =>
+//       console.log('ServiceWorker registration successful with scope: ', registration.scope))
+//     .catch((err: any) =>
+//       console.log('ServiceWorker registration failed: ', err));
+// }
 
 
 // Hot Module Replacement

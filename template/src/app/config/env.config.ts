@@ -1,14 +1,10 @@
-
 // Angular 2
-// rc2 workaround
+// rc.5 workaround; to enable production mode
 import { enableDebugTools, disableDebugTools } from '@angular/platform-browser';
 import { enableProdMode } from '@angular/core';
-import { disableDeprecatedForms, provideForms } from '@angular/forms';
 // Environment Providers
 let PROVIDERS = [
   // common env directives
-  disableDeprecatedForms(), // disable deprecated forms
-  provideForms(), // enable new forms module
 ];
 
 
@@ -21,7 +17,6 @@ if ('production' === ENV) {
   // Production
   disableDebugTools();
   enableProdMode();
-
 
   PROVIDERS = [
     ...PROVIDERS,

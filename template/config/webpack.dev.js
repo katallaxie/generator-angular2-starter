@@ -26,7 +26,7 @@ const METADATA = webpackMerge(commonConfig.metadata, {
   ENV: ENV,
   HMR: HMR
 });
-const dashboard = new Dashboard();
+const dashboard = new Dashboard(); // a new dashboard
 
 /**
  * Webpack configuration
@@ -165,7 +165,7 @@ function webpackConfig() {
      * See: https://webpack.github.io/docs/webpack-dev-server.html
      */
     devServer: {
-      outputPath: helpers.root('dist'),
+      contentBase: './src',
       port: METADATA.port,
       quiet: true,
       historyApiFallback: true,
