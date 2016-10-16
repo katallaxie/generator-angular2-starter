@@ -29,7 +29,7 @@
     "shelljs": "^0.7.3",
     "underscore.string": "^3.3.4",
     "yeoman-generator": "^0.24.1",
-    "yosay": "^1.2.0"
+    "yosay": "^1.2.1"
   },
   "devDependencies": {
     "del": "^2.2.1",
